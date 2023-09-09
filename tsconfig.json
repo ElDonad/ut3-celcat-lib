@@ -4,7 +4,8 @@
         "module": "CommonJS",
         "baseUrl": ".",
         "esModuleInterop": true,
-        "resolveJsonModule": true
+        "resolveJsonModule": true,
+        "declaration": true
     },
     "include": [
         "src/*",

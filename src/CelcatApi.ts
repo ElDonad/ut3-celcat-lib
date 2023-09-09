@@ -18,9 +18,9 @@ export class Ut3Credentials {
     }
 };
 
-type AuthenticationError = { error: "NO_TOKEN_FOUND" } | { error: "AUTHENTICATION_FAILED" };
+export type AuthenticationError = { error: "NO_TOKEN_FOUND" } | { error: "AUTHENTICATION_FAILED" };
 
-type DataFetchError = { error: "REQUEST_FAILED" } | { error: "INVALID_DATA", data: Object } | { error: "UNAUTHENTIFIED" };
+export type DataFetchError = { error: "REQUEST_FAILED" } | { error: "INVALID_DATA", data: Object } | { error: "UNAUTHENTIFIED" };
 
 export class CelcatApi {
     baseUrl: string;
