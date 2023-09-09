@@ -8,5 +8,9 @@
     },
     "include": [
         "src/*",
+        "src/models/Group.ts",
+        "src/models/Course.ts",
+        "src/models/Event.ts",
+        "src/models/Room.ts",
     ]
 }

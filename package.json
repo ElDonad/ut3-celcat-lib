@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "Elie Donadio",
+  "type": "module",
   "license": "MIT",
   "devDependencies": {
     "@types/jest": "^29.5.4",
@@ -16,6 +17,11 @@
     "test": "jest"
   },
   "dependencies": {
-    "fetch-cookie": "^2.1.0"
+    "@types/he": "^1.2.0",
+    "class-transformer": "^0.5.1",
+    "fetch-cookie": "^2.1.0",
+    "he": "^1.2.0",
+    "ts-results": "^3.3.0",
+    "tslib": "^2.6.2"
   }
 }
