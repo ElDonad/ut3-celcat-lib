@@ -12,6 +12,7 @@ export function formatDescription(desc: string) {
 
 export class Event {
     constructor(
+        public id: string | null,
         public category: string | null,
         public description: string | null,
         public course: Course | null,
@@ -66,9 +67,11 @@ export class Event {
             let backgroundColor = json.backgroundColor ? json.backgroundColor : null;
             let textColor = json.textColor ? json.textColor : null;
             let category = json.eventCategory ? json.eventCategory : null;
+            let id = json.id;
 
 
             return Ok(new Event(
+                id,
                 category,
                 description,
                 course,
