@@ -17,6 +17,9 @@
   "scripts": {
     "test": "jest"
   },
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@types/he": "^1.2.0",
     "class-transformer": "^0.5.1",
