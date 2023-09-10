@@ -25,6 +25,20 @@ export class Event {
         public textColor: string
     ) { }
 
+    isIdenticalTo(other: Event): boolean {
+        return this.id == other.id &&
+            this.description == other.description &&
+            this.start == other.start &&
+            this.end == other.end &&
+            this.allDay == other.allDay &&
+            this.backgroundColor == other.backgroundColor &&
+            this.textColor == other.textColor &&
+            this.course.id == other.course.id &&
+            this.rooms.every((r) => other.rooms.some((o) => o.id == r.id)) &&
+            this.sites.every((s) => other.sites.some((o) => o == s)) &&
+            this.category == other.category;
+    }
+
     // The courses and rooms are assumed to be be cached elsewhere, because it's certainly not useful
     // to query them every time we need to check for new events
     static fromJson(json: any, rooms: Room[] = [], courses: Course[] = []): Result<Event, void> {
