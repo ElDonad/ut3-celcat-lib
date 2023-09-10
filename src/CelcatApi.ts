@@ -24,17 +24,15 @@ export type DataFetchError = { error: "REQUEST_FAILED" } | { error: "INVALID_DAT
 
 export class CelcatApi {
     baseUrl: string;
-    private credentials: Ut3Credentials;
     authenticated = false;
     private cookieJar: ToughCookie.CookieJar = new ToughCookie.CookieJar();
     private fetch: (url: URL | RequestInfo, init?: RequestInit) => Promise<Response> = null;
-    constructor(credentials: Ut3Credentials, baseUrl: string = "https://edt.univ-tlse3.fr/calendar2") {
+    constructor(baseUrl: string = "https://edt.univ-tlse3.fr/calendar2") {
         this.baseUrl = baseUrl;
-        this.credentials = credentials
         this.fetch = fetchCookie(fetch, this.cookieJar);
     }
 
-    public async authenticate(forceReconnection = false): Promise<Result<void, AuthenticationError>> {
+    public async authenticate(credentials: Ut3Credentials, forceReconnection = false): Promise<Result<void, AuthenticationError>> {
         if (this.authenticated && !forceReconnection) {
             return Ok.EMPTY;
         }
@@ -50,8 +48,8 @@ export class CelcatApi {
 
             const formData = new FormData();
             formData.append("__RequestVerificationToken", token);
-            formData.append("Password", this.credentials.password);
-            formData.append("Name", this.credentials.username);
+            formData.append("Password", credentials.password);
+            formData.append("Name", credentials.username);
             const connectRes = await this.fetch(this.baseUrl + "/LdapLogin/Logon", {
                 method: "POST",
                 body: formData,
